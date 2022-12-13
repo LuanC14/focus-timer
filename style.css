@@ -1,0 +1,162 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "roboto", "sans-serif";
+}
+
+.hide {
+  visibility: hidden;
+  display: none;
+}
+
+#page {
+  display: grid;
+  height: 100vh;
+  place-content: center;
+}
+
+main {
+  display: flex;
+  gap: 192px;
+  align-items: center;
+}
+
+.time-section {
+  width: 20rem;
+  display: flex;
+}
+
+.controls-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.time-display span {
+  font-size: 7.875rem;
+  line-height: 9.25rem;
+  text-align: center;
+  color: #323238;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#theme-buttons {
+  max-width: 19.25rem;
+  display: grid;
+  grid-template-areas: "florest rain" "shop fire";
+  gap: 2rem;
+}
+
+#theme-buttons button {
+  width: 8.625rem;
+  height: 9.5rem;
+  padding: 3rem;
+  background: #e1e1e6;
+  border-radius: 1.5rem;
+}
+
+#theme-buttons button.theme-selected {
+  background: #02799D;
+}
+
+button svg path.theme-svg {
+  fill: #ffff;
+}
+
+.help {
+  position: absolute;
+  z-index: 1;
+  bottom: 1.5rem;
+  right: 0px;
+}
+
+.help-button {
+  color: white;
+  font-size: 58px;
+
+  background: #02799d;
+  padding-inline: 24px;
+  border-radius: 8px 0px 0px 8px;
+}
+
+
+.help-message {
+  position: relative;
+  background: #02799d;
+  text-align: start;
+  width: auto;
+
+  animation: appear .7s forwards;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(-23.75rem);
+    opacity: 1;
+  }
+}
+
+.message {
+  color: white;
+  font-size: 0.875rem;
+  padding: 1.75rem;
+}
+
+.message span img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.close-button {
+  top: 0.5rem;
+  left: 0.5rem;
+  position: absolute;
+  background: none;
+  border: none;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+@media(max-width:868px){
+  #page {
+    height: 100vh;
+    margin: 0 auto;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+
+  #theme-buttons button {
+    width: 5.625rem;
+    height: 5.625rem;
+    padding: 0.25rem;
+  }
+
+  #theme-buttons button svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .time-display span {
+    font-size: 5rem;
+    line-height: 6.25rem;
+  }
+  
+  .controls-button button img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+}
