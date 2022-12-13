@@ -1,0 +1,67 @@
+// --------------- DARK MODE ----------------
+
+export function pageMode(volumeCoffeshop,volumeFire,volumeFlorest,volumeRain,svgCoffe,svgFire,svgFlorest,svgRain,
+    cardCoffeshop,cardFire,cardFlorest,cardRain){
+
+    let light = document.querySelector('.light')
+    let dark = document.querySelector('.dark')
+
+    let body = document.querySelector('body')
+    
+    let minutes = document.querySelector('.minutes-display')
+    let point = document.querySelector('.points-display')
+    let seconds = document.querySelector('.seconds-display')
+    
+    let svgPlay = document.querySelector('.play path')
+    let svgStop = document.querySelector('.stop path')
+    let svgIncrease = document.querySelector('.increase path')
+    let svgDecrease = document.querySelector('.decrease path')
+    
+
+    function mode() {
+
+        dark.classList.toggle('hide')
+        light.classList.toggle('hide')
+
+        if(dark.classList.contains('hide')){
+            minutes.style.color = "#323238"
+            point.style.color = "#323238"
+            seconds.style.color = "#323238"
+        } else {
+            minutes.style.color = "white"
+            point.style.color = "white"
+            seconds.style.color = "white"
+        }
+            
+
+        body.classList.toggle('body-dark')
+
+        svgPlay.classList.toggle('svgControl-dark')
+        svgStop.classList.toggle('svgControl-dark')
+        svgIncrease.classList.toggle('svgControl-dark')
+        svgDecrease.classList.toggle('svgControl-dark')
+
+        cardCoffeshop.classList.toggle('selected-cardDark')
+        cardFire.classList.toggle('selected-cardDark')
+        cardFlorest.classList.toggle('selected-cardDark')
+        cardRain.classList.toggle('selected-cardDark')
+
+        svgCoffe.classList.toggle('svgCard-dark')
+        svgFlorest.classList.toggle('svgCard-dark')
+        svgRain.classList.toggle('svgCard-dark')
+        svgFire.classList.toggle('svgCard-dark')
+
+        volumeCoffeshop.classList.toggle('darkInput')
+        volumeFire.classList.toggle('darkInput')
+        volumeFlorest.classList.toggle('darkInput')
+        volumeRain.classList.toggle('darkInput')
+    }
+
+    return {
+        mode,
+        light,
+        dark
+    }
+
+
+}

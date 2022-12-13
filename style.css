@@ -32,7 +32,7 @@ main {
   justify-content: space-between;
 }
 
-.time-display span {
+.time-display button span {
   font-size: 7.875rem;
   line-height: 9.25rem;
   text-align: center;
@@ -65,13 +65,18 @@ button {
   background: #02799D;
 }
 
-#theme-buttons input {
+[type="range"] {
+  appearance: none;
   position: absolute;
   bottom: 24px;
   left: 24px;
+  border-radius: 5px;
   width: 90px;
-  height: 16px;
+  height: 4px;
+  background-color: #323238;
 }
+
+
 
 button svg path.theme-svg {
   fill: #ffff;
@@ -157,7 +162,7 @@ button svg path.theme-svg {
     line-height: 6.25rem;
   }
   
-  .controls-button button img {
+  .controls-button button svg {
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -168,3 +173,41 @@ button svg path.theme-svg {
     left: 38px; 
   }
 }
+
+/*---DARK MODE----*/
+
+.light, .dark {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+}
+
+.body-dark{
+background: #121214;
+}
+
+.cards-Dark {
+  background: #29292E;
+}
+
+.selected-cardDark {
+  background: #0A3442;
+}
+
+[type="range"].darkInput{
+  background-color:white;
+
+}
+
+.svgControl-dark {
+  fill: #C4C4CC;
+}
+
+.svgCard-dark {
+  fill: rgb(23, 23, 23);
+}
+
+
+
+
+

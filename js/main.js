@@ -1,7 +1,8 @@
 import { controls, buttonPressAudio } from './buttons.js'
 import { utils } from './utils.js'
 import { helpModal } from './help.js'
-import { buttonsThemeManager, musics } from './sounds.js'
+import { buttonsThemeManager, musics } from './themes.js'
+import { pageMode } from './darkmode.js'
 
 let svgFlorest = document.querySelector('.florest-button svg path')
 let svgRain = document.querySelector('.rain-button svg path')
@@ -24,8 +25,11 @@ let help = helpModal(button).help // Modal do botão de ajuda, recebendo o butto
 
 let soundsControl = buttonsThemeManager().managerTheme
 let removeTheme = buttonsThemeManager().markOff
+let pageModeTools = pageMode(volumeCoffeshop, volumeFire, volumeFlorest, volumeRain, svgCoffe, svgFire, svgFlorest, svgRain,
+    cardCoffeshop, cardFire, cardFlorest, cardRain)
 
-// Countdown controls
+
+// --------------- Countdown controls ------------------------
 button.playButton.addEventListener('click', () => {
     Utils.playCount()
     buttonPressAudio.play()
@@ -50,7 +54,7 @@ button.decreaseButton.addEventListener('click', () => {
 button.helpButton.addEventListener('click', help.openMessage)
 button.closeButton.addEventListener('click', help.closeMessage)
 
-// Cards themes controls
+// ------------------ Cards themes controls -----------------------------
 button.florest.addEventListener('click', () => {
 
     soundsControl(cardFlorest, svgFlorest, musics.florestTheme, volumeFlorest)
@@ -84,6 +88,9 @@ button.fire.addEventListener('click', () => {
         musics.coffeshopTheme, musics.florestTheme, musics.rainTheme)
 })
 
+pageModeTools.light.addEventListener('click', pageModeTools.mode)
+
+pageModeTools.dark.addEventListener('click', pageModeTools.mode)
 
 
 
