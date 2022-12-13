@@ -1,69 +1,92 @@
-import { controls } from './buttons.js'
+import { controls, buttonPressAudio } from './buttons.js'
 import { utils } from './utils.js'
 import { helpModal } from './help.js'
-import { buttonsThemeManager , musics } from './sounds.js'
-
-
-let florestBg = document.querySelector('.florest-button')
-let rainBg = document.querySelector('.rain-button')
-let coffeBg = document.querySelector('.coffeshop-button')
-let fireBg = document.querySelector('.fire-button')
-
+import { buttonsThemeManager, musics } from './sounds.js'
 
 let svgFlorest = document.querySelector('.florest-button svg path')
 let svgRain = document.querySelector('.rain-button svg path')
 let svgCoffe = document.querySelector('.coffeshop-button svg path')
 let svgFire = document.querySelector('.fire-button svg path')
 
+let cardFlorest = document.querySelector('.card-florest')
+let cardRain = document.querySelector('.card-rain')
+let cardFire = document.querySelector('.card-fire')
+let cardCoffeshop = document.querySelector('.card-coffeshop')
+
+let volumeFlorest = document.querySelector('#volFlorest')
+let volumeRain = document.querySelector('#volRain')
+let volumeCoffeshop = document.querySelector('#volCoffeshop')
+let volumeFire = document.querySelector('#volFire')
+
 let button = controls().buttons
-let Utils = utils(button)
-let help = helpModal(button).help
+let Utils = utils(button) // Utils que contem os controles do contador recebendo o button, variável que contem o objeto com os botões
+let help = helpModal(button).help // Modal do botão de ajuda, recebendo o button, variável que contem o objeto com os botões
 
-let soundsControl = buttonsThemeManager().Theme
-let disabled = buttonsThemeManager().markOff
+let soundsControl = buttonsThemeManager().managerTheme
+let removeTheme = buttonsThemeManager().markOff
 
+// Countdown controls
+button.playButton.addEventListener('click', () => {
+    Utils.playCount()
+    buttonPressAudio.play()
+})
 
-button.playButton.addEventListener('click', Utils.playCount)
-button.stopButton.addEventListener('click', Utils.finishCount)
-button.stopButton.addEventListener('dblclick', Utils.doubleClickStop)
-button.increaseButton.addEventListener('click', Utils.increaseMinutes)
-button.decreaseButton.addEventListener('click', Utils.decreaseMinutes)
+button.stopButton.addEventListener('click', () => {
+    Utils.finishCount()
+    buttonPressAudio.play()
+})
+button.stopButton.addEventListener('dblclick', () => {
+    Utils.doubleClickStop()
+    buttonPressAudio.play()
+})
+button.increaseButton.addEventListener('click', () => {
+    Utils.increaseMinutes()
+    buttonPressAudio.play()
+})
+button.decreaseButton.addEventListener('click', () => {
+    Utils.decreaseMinutes()
+    buttonPressAudio.play()
+})
 button.helpButton.addEventListener('click', help.openMessage)
 button.closeButton.addEventListener('click', help.closeMessage)
 
-florestBg.addEventListener('click', () => {
-    soundsControl(florestBg, svgFlorest, musics.florestTheme)
-    disabled(
-        rainBg, fireBg, coffeBg, 
-        svgFire,svgRain,svgCoffe, 
-        musics.coffeshopTheme,musics.fireTheme,musics.rainTheme)
+// Cards themes controls
+button.florest.addEventListener('click', () => {
+
+    soundsControl(cardFlorest, svgFlorest, musics.florestTheme, volumeFlorest)
+    removeTheme(
+        cardRain, cardFire, cardCoffeshop,
+        svgFire, svgRain, svgCoffe,
+        musics.coffeshopTheme, musics.fireTheme, musics.rainTheme)
 })
 
-rainBg.addEventListener('click', ()=>{
-    soundsControl(rainBg,svgRain, musics.rainTheme)
-    disabled(
-        florestBg, coffeBg, fireBg,
-        svgCoffe,svgFire,svgFlorest,
-        musics.coffeshopTheme,musics.fireTheme,musics.florestTheme)
+button.rain.addEventListener('click', () => {
+    soundsControl(cardRain, svgRain, musics.rainTheme, volumeRain)
+    removeTheme(
+        cardFlorest, cardCoffeshop, cardFire,
+        svgCoffe, svgFire, svgFlorest,
+        musics.coffeshopTheme, musics.fireTheme, musics.florestTheme)
 })
 
-coffeBg.addEventListener('click', ()=>{
-    soundsControl(coffeBg,svgCoffe, musics.coffeshopTheme)
-    disabled(
-        florestBg,rainBg,fireBg,
-        svgFire,svgFlorest,svgRain,
-        musics.fireTheme,musics.florestTheme,musics.rainTheme)
+button.coffeshop.addEventListener('click', () => {
+    soundsControl(cardCoffeshop, svgCoffe, musics.coffeshopTheme, volumeCoffeshop)
+    removeTheme(
+        cardFlorest, cardRain, cardFire,
+        svgFire, svgFlorest, svgRain,
+        musics.fireTheme, musics.florestTheme, musics.rainTheme)
 })
 
-fireBg.addEventListener('click', ()=>{
-    soundsControl(fireBg,svgFire, musics.fireTheme)
-    disabled(
-        rainBg,florestBg,coffeBg,
+button.fire.addEventListener('click', () => {
+    soundsControl(cardFire, svgFire, musics.fireTheme, volumeFire)
+    removeTheme(
+        cardRain, cardFlorest, cardCoffeshop,
         svgCoffe, svgFlorest, svgRain,
-        musics.coffeshopTheme,musics.florestTheme,musics.rainTheme)
+        musics.coffeshopTheme, musics.florestTheme, musics.rainTheme)
 })
 
-// Volume Controls
+
+
+
 
 
 

@@ -52,16 +52,25 @@ button {
   gap: 2rem;
 }
 
-#theme-buttons button {
+.cards {
   width: 8.625rem;
   height: 9.5rem;
   padding: 3rem;
   background: #e1e1e6;
   border-radius: 1.5rem;
+  position: relative;
 }
 
-#theme-buttons button.theme-selected {
+.theme-selected {
   background: #02799D;
+}
+
+#theme-buttons input {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  width: 90px;
+  height: 16px;
 }
 
 button svg path.theme-svg {
@@ -100,7 +109,7 @@ button svg path.theme-svg {
   }
 
   100% {
-    transform: translateX(-23.75rem);
+    transform: translateX(-25vw);
     opacity: 1;
   }
 }
@@ -138,12 +147,6 @@ button svg path.theme-svg {
     gap: 2.25rem;
   }
 
-  #theme-buttons button {
-    width: 5.625rem;
-    height: 5.625rem;
-    padding: 0.25rem;
-  }
-
   #theme-buttons button svg {
     width: 2rem;
     height: 2rem;
@@ -159,4 +162,9 @@ button svg path.theme-svg {
     height: 1.5rem;
   }
 
+  #theme-buttons input {
+    width: 60px ;
+    height: 16px;
+    left: 38px; 
+  }
 }
