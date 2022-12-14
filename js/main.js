@@ -70,7 +70,7 @@ button.fire.addEventListener('click', () => {
     applyTheme(elementsTheme.cardFire, elementsTheme.svgFire, musics.fireTheme, elementsTheme.volumeFire)
 })
 
-// ---- DARK MODE ----
+// ---- DARK MODE CONTROL ----
 pageModeTools.light.addEventListener('click',()=>{
     removeThemeCards()
     pageModeTools.mode()

@@ -1,3 +1,17 @@
+let florestTheme = new Audio("./assets/Floresta.wav")
+let rainTheme = new Audio("./assets/Chuva.wav")
+let coffeshopTheme = new Audio("./assets/Cafeteria.wav")
+let fireTheme = new Audio("./assets/Lareira.wav")
+
+florestTheme.loop = true, rainTheme.loop = true, coffeshopTheme.loop = true, fireTheme.loop = true
+
+export const musics = {
+    florestTheme,
+    rainTheme,
+    coffeshopTheme,
+    fireTheme
+}
+
 export const elementsTheme = {
     svgFlorest: document.querySelector('.florest-button svg path'),
     svgRain: document.querySelector('.rain-button svg path'),
@@ -13,13 +27,6 @@ export const elementsTheme = {
     volumeRain: document.querySelector('#volRain'),
     volumeCoffeshop: document.querySelector('#volCoffeshop'),
     volumeFire: document.querySelector('#volFire'),
-}
-
-export const musics = {
-    florestTheme: new Audio("./assets/Floresta.wav"),
-    rainTheme: new Audio("./assets/Chuva.wav"),
-    coffeshopTheme: new Audio("./assets/Cafeteria.wav"),
-    fireTheme: new Audio("./assets/Lareira.wav")
 }
 
 export function buttonsThemeManager() {
@@ -45,11 +52,11 @@ export function buttonsThemeManager() {
         elementsTheme.svgRain.classList.remove('theme-svg')
         elementsTheme.svgCoffe.classList.remove('theme-svg')
         elementsTheme.svgFire.classList.remove('theme-svg')
-        
-        elementsTheme.cardFire.classList.remove('theme-selected','selected-cardDark')
-        elementsTheme.cardFlorest.classList.remove('theme-selected','selected-cardDark')
-        elementsTheme.cardCoffeshop.classList.remove('theme-selected','selected-cardDark')
-        elementsTheme.cardRain.classList.remove('theme-selected','selected-cardDark')
+
+        elementsTheme.cardFire.classList.remove('theme-selected', 'selected-cardDark')
+        elementsTheme.cardFlorest.classList.remove('theme-selected', 'selected-cardDark')
+        elementsTheme.cardCoffeshop.classList.remove('theme-selected', 'selected-cardDark')
+        elementsTheme.cardRain.classList.remove('theme-selected', 'selected-cardDark')
 
         elementsTheme.volumeFire.classList.remove('inputSelected')
         elementsTheme.volumeCoffeshop.classList.remove('inputSelected')
