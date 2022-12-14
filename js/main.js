@@ -1,33 +1,16 @@
 import { controls, buttonPressAudio } from './buttons.js'
 import { utils } from './utils.js'
 import { helpModal } from './help.js'
-import { buttonsThemeManager, musics } from './themes.js'
+import { buttonsThemeManager, musics, elementsTheme } from './themes.js'
 import { pageMode } from './darkmode.js'
 
-let svgFlorest = document.querySelector('.florest-button svg path')
-let svgRain = document.querySelector('.rain-button svg path')
-let svgCoffe = document.querySelector('.coffeshop-button svg path')
-let svgFire = document.querySelector('.fire-button svg path')
-
-let cardFlorest = document.querySelector('.card-florest')
-let cardRain = document.querySelector('.card-rain')
-let cardFire = document.querySelector('.card-fire')
-let cardCoffeshop = document.querySelector('.card-coffeshop')
-
-let volumeFlorest = document.querySelector('#volFlorest')
-let volumeRain = document.querySelector('#volRain')
-let volumeCoffeshop = document.querySelector('#volCoffeshop')
-let volumeFire = document.querySelector('#volFire')
-
 let button = controls().buttons
-let Utils = utils(button) // Utils que contem os controles do contador recebendo o button, variável que contem o objeto com os botões
-let help = helpModal(button).help // Modal do botão de ajuda, recebendo o button, variável que contem o objeto com os botões
+let Utils = utils(button) // Utils contem os controles do contador. Está recebendo o objeto button.
+let help = helpModal(button).help // Modal do botão de ajuda. Está recebendo o objeto button
+let pageModeTools = pageMode(elementsTheme) // Função do DarkMode. Está recebendo objetos contendo os elementos dos cards musicais
 
-let soundsControl = buttonsThemeManager().managerTheme
-let removeTheme = buttonsThemeManager().markOff
-let pageModeTools = pageMode(volumeCoffeshop, volumeFire, volumeFlorest, volumeRain, svgCoffe, svgFire, svgFlorest, svgRain,
-    cardCoffeshop, cardFire, cardFlorest, cardRain)
-
+let applyTheme = buttonsThemeManager().managerTheme
+let removeThemeCards = buttonsThemeManager().markOff
 
 // --------------- Countdown controls ------------------------
 button.playButton.addEventListener('click', () => {
@@ -54,43 +37,49 @@ button.decreaseButton.addEventListener('click', () => {
 button.helpButton.addEventListener('click', help.openMessage)
 button.closeButton.addEventListener('click', help.closeMessage)
 
-// ------------------ Cards themes controls -----------------------------
+// ------------------ THEME MUSIC CONTROLS -----------------------------
 button.florest.addEventListener('click', () => {
-
-    soundsControl(cardFlorest, svgFlorest, musics.florestTheme, volumeFlorest)
-    removeTheme(
-        cardRain, cardFire, cardCoffeshop,
-        svgFire, svgRain, svgCoffe,
-        musics.coffeshopTheme, musics.fireTheme, musics.rainTheme)
+    if(elementsTheme.cardFlorest.classList.contains('theme-selected')) {
+        return removeThemeCards ()
+    }
+    removeThemeCards()
+    applyTheme(elementsTheme.cardFlorest, elementsTheme.svgFlorest, musics.florestTheme, elementsTheme.volumeFlorest)
 })
 
 button.rain.addEventListener('click', () => {
-    soundsControl(cardRain, svgRain, musics.rainTheme, volumeRain)
-    removeTheme(
-        cardFlorest, cardCoffeshop, cardFire,
-        svgCoffe, svgFire, svgFlorest,
-        musics.coffeshopTheme, musics.fireTheme, musics.florestTheme)
+    if(elementsTheme.cardRain.classList.contains('theme-selected')) {
+        return removeThemeCards ()
+    }
+    removeThemeCards()
+    applyTheme(elementsTheme.cardRain, elementsTheme.svgRain, musics.rainTheme, elementsTheme.volumeRain)
 })
 
 button.coffeshop.addEventListener('click', () => {
-    soundsControl(cardCoffeshop, svgCoffe, musics.coffeshopTheme, volumeCoffeshop)
-    removeTheme(
-        cardFlorest, cardRain, cardFire,
-        svgFire, svgFlorest, svgRain,
-        musics.fireTheme, musics.florestTheme, musics.rainTheme)
+    if(elementsTheme.cardCoffeshop.classList.contains('theme-selected')) {
+        return removeThemeCards ()
+    }
+    removeThemeCards()
+    applyTheme(elementsTheme.cardCoffeshop, elementsTheme.svgCoffe, musics.coffeshopTheme, elementsTheme.volumeCoffeshop)
 })
 
 button.fire.addEventListener('click', () => {
-    soundsControl(cardFire, svgFire, musics.fireTheme, volumeFire)
-    removeTheme(
-        cardRain, cardFlorest, cardCoffeshop,
-        svgCoffe, svgFlorest, svgRain,
-        musics.coffeshopTheme, musics.florestTheme, musics.rainTheme)
+    if(elementsTheme.cardFire.classList.contains('theme-selected')) {
+        return removeThemeCards ()
+    }
+    removeThemeCards()
+    applyTheme(elementsTheme.cardFire, elementsTheme.svgFire, musics.fireTheme, elementsTheme.volumeFire)
 })
 
-pageModeTools.light.addEventListener('click', pageModeTools.mode)
+// ---- DARK MODE ----
+pageModeTools.light.addEventListener('click',()=>{
+    removeThemeCards()
+    pageModeTools.mode()
+} )
 
-pageModeTools.dark.addEventListener('click', pageModeTools.mode)
+pageModeTools.dark.addEventListener('click',()=>{
+    removeThemeCards()
+    pageModeTools.mode()
+})
 
 
 

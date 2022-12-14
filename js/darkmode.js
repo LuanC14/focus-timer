@@ -1,13 +1,9 @@
-// --------------- DARK MODE ----------------
-
-export function pageMode(volumeCoffeshop,volumeFire,volumeFlorest,volumeRain,svgCoffe,svgFire,svgFlorest,svgRain,
-    cardCoffeshop,cardFire,cardFlorest,cardRain){
+export function pageMode(elementsTheme){
 
     let light = document.querySelector('.light')
     let dark = document.querySelector('.dark')
 
     let body = document.querySelector('body')
-    
     let minutes = document.querySelector('.minutes-display')
     let point = document.querySelector('.points-display')
     let seconds = document.querySelector('.seconds-display')
@@ -16,7 +12,6 @@ export function pageMode(volumeCoffeshop,volumeFire,volumeFlorest,volumeRain,svg
     let svgStop = document.querySelector('.stop path')
     let svgIncrease = document.querySelector('.increase path')
     let svgDecrease = document.querySelector('.decrease path')
-    
 
     function mode() {
 
@@ -32,7 +27,6 @@ export function pageMode(volumeCoffeshop,volumeFire,volumeFlorest,volumeRain,svg
             point.style.color = "white"
             seconds.style.color = "white"
         }
-            
 
         body.classList.toggle('body-dark')
 
@@ -41,27 +35,24 @@ export function pageMode(volumeCoffeshop,volumeFire,volumeFlorest,volumeRain,svg
         svgIncrease.classList.toggle('svgControl-dark')
         svgDecrease.classList.toggle('svgControl-dark')
 
-        cardCoffeshop.classList.toggle('selected-cardDark')
-        cardFire.classList.toggle('selected-cardDark')
-        cardFlorest.classList.toggle('selected-cardDark')
-        cardRain.classList.toggle('selected-cardDark')
+        elementsTheme.cardCoffeshop.classList.toggle('cards-Dark')
+        elementsTheme.cardFire.classList.toggle('cards-Dark')
+        elementsTheme.cardFlorest.classList.toggle('cards-Dark')
+        elementsTheme.cardRain.classList.toggle('cards-Dark')
 
-        svgCoffe.classList.toggle('svgCard-dark')
-        svgFlorest.classList.toggle('svgCard-dark')
-        svgRain.classList.toggle('svgCard-dark')
-        svgFire.classList.toggle('svgCard-dark')
+        elementsTheme.svgCoffe.classList.toggle('svgCard-dark')
+        elementsTheme.svgFlorest.classList.toggle('svgCard-dark')
+        elementsTheme.svgRain.classList.toggle('svgCard-dark')
+        elementsTheme.svgFire.classList.toggle('svgCard-dark')
 
-        volumeCoffeshop.classList.toggle('darkInput')
-        volumeFire.classList.toggle('darkInput')
-        volumeFlorest.classList.toggle('darkInput')
-        volumeRain.classList.toggle('darkInput')
+        elementsTheme.volumeCoffeshop.classList.toggle('darkInput')
+        elementsTheme.volumeFire.classList.toggle('darkInput')
+        elementsTheme.volumeFlorest.classList.toggle('darkInput')
+        elementsTheme.volumeRain.classList.toggle('darkInput')
     }
-
     return {
         mode,
         light,
         dark
     }
-
-
 }

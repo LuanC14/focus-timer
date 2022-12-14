@@ -52,6 +52,14 @@ button {
   gap: 2rem;
 }
 
+#theme-buttons button svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
 .cards {
   width: 8.625rem;
   height: 9.5rem;
@@ -76,7 +84,9 @@ button {
   background-color: #323238;
 }
 
-
+[type="range"].inputSelected{
+  background-color: white;
+}
 
 button svg path.theme-svg {
   fill: #ffff;
@@ -153,8 +163,8 @@ button svg path.theme-svg {
   }
 
   #theme-buttons button svg {
-    width: 2rem;
-    height: 2rem;
+    width: 32px;
+    height: 32px;
   }
 
   .time-display span {
@@ -187,7 +197,7 @@ background: #121214;
 }
 
 .cards-Dark {
-  background: #29292E;
+  background: #29292E
 }
 
 .selected-cardDark {
@@ -196,7 +206,6 @@ background: #121214;
 
 [type="range"].darkInput{
   background-color:white;
-
 }
 
 .svgControl-dark {
@@ -204,8 +213,10 @@ background: #121214;
 }
 
 .svgCard-dark {
-  fill: rgb(23, 23, 23);
+  fill: white
 }
+
+
 
 
 
