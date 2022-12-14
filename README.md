@@ -13,5 +13,5 @@
 <br>
 
 > Layout final da aplicação com White e Dark Mode
-![preview](./.github/white.png)
-![preview](./.github/dark.png)
+![preview](././github/white.PNG)
+![preview](././github/dark.PNG)
