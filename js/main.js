@@ -5,9 +5,9 @@ import { buttonsThemeManager, musics, elementsTheme } from './themes.js'
 import { pageMode } from './darkmode.js'
 
 let button = controls().buttons
+let pageModeTool = pageMode(elementsTheme,button) // Função do DarkMode. Está recebendo objetos contendo os elementos dos cards musicais
 let Utils = utils(button) // Utils contem os controles do contador. Está recebendo o objeto button.
 let help = helpModal(button).help // Modal do botão de ajuda. Está recebendo o objeto button
-let pageModeTools = pageMode(elementsTheme) // Função do DarkMode. Está recebendo objetos contendo os elementos dos cards musicais
 
 let applyTheme = buttonsThemeManager().managerTheme
 let removeThemeCards = buttonsThemeManager().markOff
@@ -71,14 +71,14 @@ button.fire.addEventListener('click', () => {
 })
 
 // ---- DARK MODE CONTROL ----
-pageModeTools.light.addEventListener('click',()=>{
+button.lightButton.addEventListener('click',()=>{
     removeThemeCards()
-    pageModeTools.mode()
+    pageModeTool.mode()
 } )
 
-pageModeTools.dark.addEventListener('click',()=>{
+button.darkButton.addEventListener('click',()=>{
     removeThemeCards()
-    pageModeTools.mode()
+    pageModeTool.mode()
 })
 
 

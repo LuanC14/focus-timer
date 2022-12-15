@@ -1,7 +1,7 @@
-export function pageMode(elementsTheme){
+export function pageMode(elementsTheme,button){
 
-    let light = document.querySelector('.light')
-    let dark = document.querySelector('.dark')
+    let light = button.lightButton
+    let dark = button.darkButton
 
     let body = document.querySelector('body')
     let minutes = document.querySelector('.minutes-display')
